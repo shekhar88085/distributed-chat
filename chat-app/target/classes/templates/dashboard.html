@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Chat Dashboard</h1>
+    <div>
+        <h2>Chat with users</h2>
+        <input type="text" id="recipientId" placeholder="Enter username">
+        <input type="text" id="messageInput" placeholder="Enter message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <div>
+        <h2>Group Chat</h2>
+        <input type="text" id="groupId" placeholder="Enter group ID">
+        <input type="text" id="groupMessageInput" placeholder="Enter group message">
+        <button onclick="sendGroupMessage()">Send</button>
+    </div>
+
+    <div id="messages"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/dist/stomp.min.js"></script>
+    <script>
+        var socket = new SockJS('/chat');
+        var stompClient = Stomp.over(socket);
+        
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            
+            stompClient.subscribe('/topic/user/' + 'userId', function (messageOutput) {
+                showMessage(JSON.parse(messageOutput.body));
+            });
+
+            stompClient.subscribe('/topic/group/' + 'groupId', function (messageOutput) {
+                showMessage(JSON.parse(messageOutput.body));
+            });
+        });
+
+        function sendMessage() {
+            var recipientId = document.getElementById('recipientId').value;
+            var messageInput = document.getElementById('messageInput').value;
+            
+            var message = {
+                senderId: 'userId',
+                recipientId: recipientId,
+                content: messageInput,
+                timestamp: new Date().getTime()
+            };
+            stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
+        }
+
+        function sendGroupMessage() {
+            var groupId = document.getElementById('groupId').value;
+            var groupMessageInput = document.getElementById('groupMessageInput').value;
+            
+            var message = {
+                senderId: 'userId',
+                groupId: groupId,
+                content: groupMessageInput,
+                timestamp: new Date().getTime()
+            };
+            stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
+        }
+
+        function showMessage(message) {
+            var messagesDiv = document.getElementById('messages');
+            var newMessage = document.createElement('div');
+            newMessage.textContent = message.content;
+            messagesDiv.appendChild(newMessage);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+com/chat/service/ChatService.class
+com/chat/model/Message.class
+com/chat/model/User.class
+com/chat/model/Group.class
+com/chat/ChatApplication.class
+com/chat/websocket/WebSocketConfig.class
+com/chat/repository/MessageRepository.class
+com/chat/controller/ChatController.class
+com/chat/repository/UserRepository.class

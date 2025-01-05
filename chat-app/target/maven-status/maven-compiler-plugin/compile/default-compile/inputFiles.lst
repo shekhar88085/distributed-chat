@@ -1,0 +1,9 @@
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/ChatApplication.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/controller/ChatController.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/model/Group.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/model/Message.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/model/User.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/repository/MessageRepository.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/repository/UserRepository.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/service/ChatService.java
+/Users/apple/Documents/workspace-spring-tool-suite-4-4.24.0.RELEASE/distributed-chat/chat-app/src/main/java/com/chat/websocket/WebSocketConfig.java
